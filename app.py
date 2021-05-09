@@ -26,7 +26,7 @@ class WebScraper:
                 messagebox.showinfo(title="Site Updated", message=f"{url} has been updated and is different from the last request!")
 
             html_parsed_before = html_parsed
-            response.urlcleanup()
+            urllib.request.urlcleanup()
             response.close()
 
             time.sleep(update_rate) #Wait for x seconds before sending next request
