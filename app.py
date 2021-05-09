@@ -20,12 +20,13 @@ class WebScraper:
             html = response.read()
 
             html_parsed = BeautifulSoup(html, "html.parser")
-            
+
             if html_parsed != html_parsed_before:
                 print(f"Site Updated! Website '{url}' is different from the last request.")
                 messagebox.showinfo(title="Site Updated", message=f"{url} has been updated and is different from the last request!")
 
             html_parsed_before = html_parsed
+            response.urlcleanup()
             response.close()
 
             time.sleep(update_rate) #Wait for x seconds before sending next request
